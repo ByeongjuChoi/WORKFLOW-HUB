@@ -6,4 +6,6 @@ import java.util.List;
 @Mapper
 public interface TaskMapper {
     List<Task> findAll();
+
+    int inert(Task task);
 }

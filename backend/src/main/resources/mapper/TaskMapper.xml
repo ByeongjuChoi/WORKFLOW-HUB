@@ -13,5 +13,20 @@
           FROM tasks
          ORDER BY id
     </select>
+
+    <insert id="insert" parameterType="com.workflowhub.backend.Task">
+        INSERT INTO tasks (
+            title
+          , description
+          , status
+          , assignee_id
+        )
+        VALUES (
+            #{title}
+          , #{description}
+          , #{status}
+          , #{assigneeId}
+        )
+    </insert>
 </mapper>
 

@@ -17,4 +17,8 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return taskMapper.findAll();
     }
+
+    public int insertTask(Task task) {
+        return taskMapper.inert(task);
+    }
 }
