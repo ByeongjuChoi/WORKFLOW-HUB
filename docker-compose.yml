@@ -1,0 +1,27 @@
+
+services:
+  db:
+    image: postgres:18
+    container_name: workflow-hub-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: workflow_hub
+      POSTGRES_USER: workflow_app
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env}
+
+    ports:
+      - "127.0.0.1:15432:5432"
+      - "100.102.98.3:15432:5432"
+
+    volumes:
+      - workflow_hub_pgdata:/var/lib/postgresql
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U workflow_app -d workflow_hub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  workflow_hub_pgdata:
