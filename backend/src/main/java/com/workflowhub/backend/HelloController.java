@@ -10,4 +10,5 @@ public class HelloController {
     public String hello() {
         return "WORKFLOW HUB Backend is running!";
     }
+
 }
