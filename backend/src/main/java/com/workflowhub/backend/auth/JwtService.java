@@ -1,7 +1,7 @@
 
 package com.workflowhub.backend.auth;
 
-import com.workflowhub.backend.user.User;
+import com.workflowhub.backend.dto.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

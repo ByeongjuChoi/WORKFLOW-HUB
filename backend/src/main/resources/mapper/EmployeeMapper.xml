@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.workflowhub.backend.mapper.EmployeeMapper">
+    <select id="findAll" resultType="com.workflowhub.backend.dto.EmployeeResponse">
+        SELECT u.id
+             , u.username
+             , u.name
+             , u.email
+             , o.name AS department
+             , u.role
+             , u.status
+             , u.employment_date AS "employmentDate"
+          FROM users u
+          LEFT JOIN organizations o
+            ON u.organization_id = o.id
+         ORDER BY u.id ASC
+    </select>
+
+    <insert id="insert">
+        INSERT INTO users (
+              username
+            , password_hash
+            , name
+            , email
+            , organization_id
+            , role
+            , status
+            , employment_date
+        )
+        VALUES (
+              #{employee.username}
+            , #{employee.password}
+            , #{employee.name}
+            , #{employee.email}
+            , #{employee.organizationId}
+            , #{employee.role}
+            , 'ACTIVE'
+            , #{employee.employmentDate}
+        )
+    </insert>
+
+    <!-- 아이디 중복 확인 -->
+    <select id="countByUsername" resultType="int">
+        SELECT COUNT(*)
+          FROM users
+         WHERE username = #{username}
+    </select>
+
+    <!-- 부서 ID 검증 (존재하는 부서인지) -->
+    <select id="countByOrganizationId" resultType="int">
+        SELECT COUNT(*)
+          FROM organizations
+         WHERE id = #{organizationId}
+    </select>
+
+    <!-- 직원 정보 수정 -->
+    <update id="update">
+        UPDATE users
+           SET name = #{employee.name}
+             , email = #{employee.email}
+             , organization_id = #{employee.organizationId}
+             , role = #{employee.role}
+             , status = #{employee.status}
+             , employment_date = #{employee.employmentDate}
+             , updated_at = CURRENT_TIMESTAMP
+         WHERE id = #{id}
+    </update>
+
+    <!-- 직원 존재하는지 확인 -->
+    <select id="countById" resultType="int">
+        SELECT COUNT(*)
+          FROM users
+         WHERE id = #{id}
+    </select>
+
+    <!-- 직원 삭제 -->
+    <delete id="deleteById">
+        DELETE FROM users
+         WHERE id = #{id}
+    </delete>
+
+    <!-- 시스템 관리자 삭제 방지 -->
+    <select id="findRoleById" resultType="string">
+        SELECT role
+          FROM users
+         WHERE id = #{id}
+    </select>
+
+    <!-- 이메일 중복 방지 -->
+    <select id="countByEmail" resultType="int">
+        SELECT COUNT(*)
+          FROM users
+         WHERE email = #{email}
+    </select>
+
+    <!-- 이메일 중복 방지 -->
+    <select id="countByEmailExcludingId" resultType="int">
+        SELECT COUNT(*)
+          FROM users
+         WHERE email = #{email}
+           AND id != #{id}
+    </select>
+</mapper>

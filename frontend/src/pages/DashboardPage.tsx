@@ -98,12 +98,13 @@ function DashboardPage() {
                         </div>
                     </Link>
 
-                    <div className="dashboard-menu-card upcoming-card">
+                    <Link to="/employees" className="dashboard-menu-card">
+                    
                         <div className="menu-card-top">
                             <div className="menu-icon organization-icon">
-                                ◫
+                                👥
                             </div>
-                            <span className="coming-soon">準備中</span>
+                            <span className="menu-card-arrow">↗</span>
                         </div>
 
                         <h3>組織管理</h3>
@@ -111,10 +112,12 @@ function DashboardPage() {
                             組織や所属メンバーの情報を管理します。
                         </p>
 
-                        <div className="menu-card-footer disabled-footer">
-                            <span>今後対応予定</span>
+                        <div className="menu-card-footer">
+                            <span>組織管理一覧へ</span>
+                            <span>→</span>
                         </div>
-                    </div>
+                    
+                    </Link>
                 </div>
             </section>
 

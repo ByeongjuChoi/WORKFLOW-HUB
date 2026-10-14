@@ -1,8 +1,8 @@
 
 package com.workflowhub.backend.auth;
 
-import com.workflowhub.backend.user.User;
-import com.workflowhub.backend.user.UserMapper;
+import com.workflowhub.backend.dto.User;
+import com.workflowhub.backend.mapper.UserMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

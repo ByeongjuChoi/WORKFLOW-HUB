@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import TaskPage from "./pages/TaskPage";
 import TaskCreatePage from "./pages/TaskCreatePage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import EmployeeManagementPage from "./pages/EmployeeManagementPage";
 
 function App() {
     return (
@@ -19,13 +20,10 @@ function App() {
                         <Route path="/dashboard" element={<DashboardPage />} />
                         <Route path="/tasks" element={<TaskPage />} />
                         <Route path="/tasks/create" element={<TaskCreatePage />} />
+                        <Route path="/employees" element={<EmployeeManagementPage />} />
                     </Route>
                 </Route>
-
-                <Route
-                    path="/"
-                    element={<Navigate to="/login" replace />}
-                />
+                <Route path="/" element={<Navigate to="/login" replace />} />
             </Routes>
         </BrowserRouter>
     );

@@ -1,6 +1,7 @@
 
-package com.workflowhub.backend.user;
+package com.workflowhub.backend.mapper;
 
+import com.workflowhub.backend.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

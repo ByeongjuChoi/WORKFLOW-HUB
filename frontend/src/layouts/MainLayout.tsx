@@ -57,6 +57,16 @@ function MainLayout() {
                     </NavLink>
 
                     <NavLink
+                        to="/employees"
+                        className={({ isActive }) =>
+                            `sidebar-link ${isActive ? "active" : ""}`
+                        }
+                    >
+                        <span className="nav-icon">👥</span>
+                        <span>組織管理</span>
+                    </NavLink>
+
+                    <NavLink
                         to="/tasks"
                         className={({ isActive }) =>
                             `sidebar-link ${isActive ? "active" : ""}`

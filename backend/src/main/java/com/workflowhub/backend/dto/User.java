@@ -1,5 +1,5 @@
 
-package com.workflowhub.backend.user;
+package com.workflowhub.backend.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
